@@ -35,12 +35,10 @@ def login():
     if request.method ==  "POST":
         user = request.form["username"]
         password = request.form["password"]
-        session["user"] = user
- #       user = request.args.get("username")
- #       password = request.args.get("password")   
+ 
         if user == "admin" and password == "password":  # Simple authentication check
             session_id = str(uuid.uuid4())
-            sessions[session_id] = {"ip": request.remote_addr, "user": user}
+            sessions[session_id] = {"ip": request.remote_addr}
             response = make_response(f"Login successful. Session ID: {session_id}\n")
             response.set_cookie("session_id", session_id, httponly=True, samesite="Lax")
             response.headers["Session-ID"] = session_id

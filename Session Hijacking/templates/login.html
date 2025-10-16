@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Demo Login</title>
+  <style>
+    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial; padding: 3rem; }
+    .card { max-width: 360px; margin: 0 auto; padding: 1.25rem; border-radius: 8px; box-shadow: 0 6px 18px rgba(0,0,0,0.06); }
+    input { width: 100%; padding: .5rem; margin: .5rem 0; box-sizing: border-box; }
+    button { width: 100%; padding: .6rem; margin-top: .5rem; border: none; border-radius: 6px; cursor: pointer; }
+    .error { color: #9b1c1c; font-size: .9rem; }
+    small.note { color: #666; display:block; margin-top:.5rem; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Sign in (demo)</h2>
+
+    {% if error %}
+      <div class="error">{{ error }}</div>
+    {% endif %}
+
+    <form method="post" action="/login">
+      <label>
+        Username
+        <input name="username" type="text" required autocomplete="username" />
+      </label>
+
+      <label>
+        Password
+        <input name="password" type="password" required autocomplete="current-password" />
+      </label>
+
+      <button type="submit">Log in</button>
+    </form>
+
+    <small class="note">This is a demo. Do not use real credentials. For production: use HTTPS, hashed passwords, and secure HttpOnly cookies.</small>
+  </div>
+</body>
+</html>
